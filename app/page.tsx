@@ -68,7 +68,7 @@ function Calculator() {
 
   const jaar  = inv * pct / 100
   const maand = jaar / 12
-  const n10   = inv * Math.pow(1 + pct / 100, 10)
+  const n10   = inv + jaar * 10
 
   return (
     <section id="calculator" className="py-32 px-6 bg-white">
