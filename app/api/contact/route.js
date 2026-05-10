@@ -25,7 +25,7 @@ export async function POST(request) {
 
     await resend.emails.send({
       from: 'Opvang Kapitaal <onboarding@resend.dev>',
-      to: ['info@hartstarters.be'],
+      to: ['info@hartstarters.be', 'takleandra@gmail.com'],
       replyTo: email,
       subject: `Nieuwe investeerder interesse van ${naam}`,
       html,
