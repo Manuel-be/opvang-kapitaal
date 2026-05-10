@@ -78,7 +78,7 @@ function Calculator() {
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4" style={{ color: TX }}>
             Bereken uw rendement
           </h2>
-          <p className="text-lg" style={{ color: SM }}>Stel uw budget in — het resultaat volgt direct.</p>
+          <p className="text-lg" style={{ color: SM }}>Stel uw budget in. Het resultaat volgt direct.</p>
         </Reveal>
 
         <Reveal delay={0.1} className="rounded-2xl border border-gray-100 bg-white p-8 md:p-12 shadow-sm">
@@ -177,8 +177,8 @@ function Contact() {
                   <Check size={11} strokeWidth={3} style={{ color: TX }} />
                 </div>
                 <div>
-                  <span className="text-sm font-medium" style={{ color: TX }}>{l} </span>
-                  <span className="text-sm" style={{ color: SM }}>— {s}</span>
+                  <span className="text-sm font-medium" style={{ color: TX }}>{l}: </span>
+                  <span className="text-sm" style={{ color: SM }}>{s}</span>
                 </div>
               </div>
             ))}
@@ -215,9 +215,9 @@ function Contact() {
                 <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-gray-400 mb-2">Budget *</label>
                 <select required value={form.budget} onChange={e => setForm({ ...form, budget: e.target.value })} className={inp + ' appearance-none cursor-pointer'}>
                   <option value="">Selecteer uw budget</option>
-                  <option>€ 80.000 – € 150.000</option>
-                  <option>€ 150.000 – € 300.000</option>
-                  <option>€ 300.000 – € 500.000</option>
+                  <option>€ 80.000 tot € 150.000</option>
+                  <option>€ 150.000 tot € 300.000</option>
+                  <option>€ 300.000 tot € 500.000</option>
                   <option>€ 500.000 of meer</option>
                 </select>
               </div>
@@ -267,52 +267,74 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <section className="min-h-screen flex items-center pt-16 px-6 overflow-hidden bg-white">
-        {/* Achtergrond accent */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full"
             style={{ background: 'radial-gradient(circle, #F4C54210 0%, transparent 65%)' }} />
         </div>
 
-        <div className="max-w-5xl mx-auto w-full py-28">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}>
+        <div className="max-w-5xl mx-auto w-full py-20">
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
 
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.14em] mb-10 border"
-              style={{ borderColor: '#F4C54250', background: '#FFF8E150', color: '#92400e' }}>
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: Y }} />
-              Investeerdersoproep · Oost-Vlaanderen
-            </div>
+            {/* Links — tekst */}
+            <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.14em] mb-8 border"
+                style={{ borderColor: '#F4C54250', background: '#FFF8E150', color: '#92400e' }}>
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: Y }} />
+                Investeerdersoproep Oost-Vlaanderen
+              </div>
 
-            {/* Headline */}
-            <h1 className="text-6xl md:text-8xl font-bold tracking-[-0.03em] leading-[1.02] mb-8 max-w-4xl"
-              style={{ color: TX }}>
-              Investeren in<br />
-              <span style={{ color: Y }}>kinderopvang</span><br />
-              met rendement.
-            </h1>
+              <h1 className="text-5xl md:text-6xl font-bold tracking-[-0.03em] leading-[1.05] mb-6"
+                style={{ color: TX }}>
+                Investeren in<br />
+                <span style={{ color: Y }}>kinderopvang</span><br />
+                met rendement.
+              </h1>
 
-            <p className="text-xl text-gray-500 max-w-xl leading-relaxed mb-12">
-              Opvang Kapitaal bouwt een erkende crèche voor 28 kinderen in Oost-Vlaanderen. Stabiel rendement via dubbele inkomstenstroom. Instap vanaf € 80.000.
-            </p>
+              <p className="text-lg text-gray-500 leading-relaxed mb-8">
+                Opvang Kapitaal bouwt een erkende crèche voor 28 kinderen in Oost-Vlaanderen. Stabiel rendement via dubbele inkomstenstroom. Instap vanaf € 80.000.
+              </p>
 
-            <div className="flex flex-wrap gap-3 mb-24">
-              <a href="#calculator"
-                className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm font-semibold transition-all hover:opacity-85"
-                style={{ background: Y, color: TX }}>
-                Bereken uw rendement <ArrowRight size={15} />
-              </a>
-              <a href="#contact"
-                className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm font-semibold border border-gray-200 text-gray-600 hover:border-gray-300 hover:text-gray-900 transition-all">
-                Plan een gesprek
-              </a>
-            </div>
+              <div className="flex flex-wrap gap-3">
+                <a href="#calculator"
+                  className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm font-semibold transition-all hover:opacity-85"
+                  style={{ background: Y, color: TX }}>
+                  Bereken uw rendement <ArrowRight size={15} />
+                </a>
+                <a href="#contact"
+                  className="flex items-center gap-2 px-7 py-3.5 rounded-lg text-sm font-semibold border border-gray-200 text-gray-600 hover:border-gray-300 hover:text-gray-900 transition-all">
+                  Plan een gesprek
+                </a>
+              </div>
+            </motion.div>
 
-            {/* Stats strip */}
-            <div className="grid grid-cols-3 gap-px rounded-xl overflow-hidden border border-gray-100 mb-12">
+            {/* Rechts — kinderfoto */}
+            <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}>
+              <div className="relative h-[480px] rounded-3xl overflow-hidden shadow-2xl shadow-amber-100">
+                <Image
+                  src={FOTOS.kind1}
+                  alt="Gelukkige kinderen in een crèche"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/95 backdrop-blur-sm shadow-sm">
+                    <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" />
+                    <p className="text-xs font-semibold" style={{ color: TX }}>Professionele opvang voor 0 tot 3 jaar</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Stats strip */}
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}>
+            <div className="grid grid-cols-3 gap-px rounded-xl overflow-hidden border border-gray-100">
               {[
-                { n: 28,  s: '',   l: 'Opvangplaatsen',  sub: '0 tot 3 jaar' },
-                { n: 18,  s: '+',  l: 'Mnd wachtlijst',  sub: 'Oost-Vlaanderen' },
-                { n: 80,  s: 'K', l: 'Min. instap (€)',  sub: 'Per investeerder' },
+                { n: 28, s: '',  l: 'Opvangplaatsen', sub: '0 tot 3 jaar' },
+                { n: 18, s: '+', l: 'Mnd wachtlijst',  sub: 'Oost-Vlaanderen' },
+                { n: 80, s: 'K', l: 'Min. instap (€)', sub: 'Per investeerder' },
               ].map(st => (
                 <div key={st.l} className="bg-gray-50 py-6 px-5 text-center">
                   <p className="text-4xl font-bold mb-0.5" style={{ color: TX }}>
@@ -323,23 +345,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
-            {/* Hero foto */}
-            <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden">
-              <Image
-                src={FOTOS.hero}
-                alt="Kinderopvang — vrolijke kinderen in een crèche"
-                fill
-                className="object-cover object-center"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              <div className="absolute bottom-5 left-6 flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-sm" style={{ color: TX }}>
-                <span className="w-2 h-2 rounded-full bg-green-500" />
-                Professionele kinderopvang · 0–3 jaar
-              </div>
-            </div>
-
           </motion.div>
         </div>
       </section>
@@ -431,8 +436,8 @@ export default function Home() {
             {[
               { n: '01', icon: Shield,    t: 'Stabiele sector',         s: 'Kinderopvang is niet conjunctuurgevoelig. Vraag groeit elk jaar, ongeacht de economie.' },
               { n: '02', icon: TrendingUp,t: 'Structureel tekort',      s: 'Gemiddeld 18+ maanden wachten in Oost-Vlaanderen. Gegarandeerde vraag van dag één.' },
-              { n: '03', icon: BarChart3, t: 'Langetermijnrendement',   s: 'Doelrendement van 4–14% per jaar via ouderbijdragen en overheidssubsidies.' },
-              { n: '04', icon: Users,     t: 'Professioneel beheer',    s: 'U investeert. Wij zorgen voor de operatie — gediplomeerde begeleiders, transparant bestuur.' },
+              { n: '03', icon: BarChart3, t: 'Langetermijnrendement',   s: 'Doelrendement van 4 tot 14% per jaar via ouderbijdragen en overheidssubsidies.' },
+              { n: '04', icon: Users,     t: 'Professioneel beheer',    s: 'U investeert. Wij zorgen voor de operatie: gediplomeerde begeleiders, transparant bestuur.' },
               { n: '05', icon: Building2, t: 'Schaalbaar model',        s: 'Het businessmodel is reproduceerbaar. Uitbreiding naar meerdere locaties behoort tot de visie.' },
             ].map(({ n, icon: Icon, t, s }, i) => (
               <Reveal key={n} delay={i * 0.05}>
@@ -500,7 +505,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-4">
             {[
               { n: '01', t: 'Kennismakingsgesprek', s: 'U vult het formulier in. We plannen een vertrouwelijk gesprek en brengen uw situatie in kaart.' },
-              { n: '02', t: 'Persoonlijk voorstel',  s: 'Op basis van uw budget en doelen stellen we een concreet voorstel op — rendement, looptijd, structuur.' },
+              { n: '02', t: 'Persoonlijk voorstel',  s: 'Op basis van uw budget en doelen stellen we een concreet voorstel op: rendement, looptijd, structuur.' },
               { n: '03', t: 'Langetermijnpartner',   s: 'Na ondertekening ontvangt u jaarlijkse rapportages en bent u mede-eigenaar van een groeiend project.' },
             ].map((stap, i) => (
               <Reveal key={stap.n} delay={i * 0.1}>
@@ -533,9 +538,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { q: 'Een sector met structurele vraag en overheidssteun — precies het type investering dat ik zoek. Stabiel en maatschappelijk relevant.', n: 'Particuliere investeerder', r: 'Oost-Vlaanderen' },
+              { q: 'Een sector met structurele vraag en overheidssteun. Precies het type investering dat ik zoek: stabiel en maatschappelijk relevant.', n: 'Particuliere investeerder', r: 'Oost-Vlaanderen' },
               { q: 'De transparantie en persoonlijke aanpak gaven ons het vertrouwen om in te stappen. We worden als partner behandeld, niet als getal.', n: 'Familiale holding',          r: 'Gent' },
-              { q: 'Kinderopvang is onderbedeeld in België. Dit project speelt slim in op een structureel probleem — dat vind ik als investeerder aantrekkelijk.', n: 'Business angel', r: 'Vlaanderen' },
+              { q: 'Kinderopvang is onderbedeeld in België. Dit project speelt slim in op een structureel probleem. Dat vind ik als investeerder aantrekkelijk.', n: 'Business angel', r: 'Vlaanderen' },
             ].map((t, i) => (
               <Reveal key={i} delay={i * 0.08}>
                 <div className="flex flex-col h-full rounded-xl border border-gray-100 p-7 bg-white hover:border-amber-200 hover:shadow-sm transition-all">

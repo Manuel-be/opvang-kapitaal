@@ -11,22 +11,24 @@ export async function POST(request) {
       return NextResponse.json({ fout: 'Naam en e-mail zijn verplicht.' }, { status: 400 })
     }
 
+    const html = `
+      <h2 style="color:#1B2B4B;font-family:sans-serif">Nieuwe aanvraag via Opvang Kapitaal</h2>
+      <table style="font-family:sans-serif;font-size:15px;border-collapse:collapse;width:100%;max-width:560px">
+        <tr><td style="padding:8px 12px;font-weight:600;color:#555;width:140px">Naam</td><td style="padding:8px 12px">${naam}</td></tr>
+        <tr style="background:#f9f9f7"><td style="padding:8px 12px;font-weight:600;color:#555">E-mail</td><td style="padding:8px 12px"><a href="mailto:${email}">${email}</a></td></tr>
+        <tr><td style="padding:8px 12px;font-weight:600;color:#555">Telefoon</td><td style="padding:8px 12px">${telefoon || 'niet ingevuld'}</td></tr>
+        <tr style="background:#f9f9f7"><td style="padding:8px 12px;font-weight:600;color:#555">Budget</td><td style="padding:8px 12px">${budget || 'niet ingevuld'}</td></tr>
+        <tr><td style="padding:8px 12px;font-weight:600;color:#555;vertical-align:top">Bericht</td><td style="padding:8px 12px;white-space:pre-wrap">${bericht || 'geen bericht'}</td></tr>
+      </table>
+      <p style="font-family:sans-serif;font-size:13px;color:#999;margin-top:24px">Verzonden via opvangkapitaal.be</p>
+    `
+
     await resend.emails.send({
       from: 'Opvang Kapitaal <onboarding@resend.dev>',
-      to: process.env.CONTACT_EMAIL,
+      to: ['takleandra@gmail.com', 'info@hartstarters.be'],
       replyTo: email,
-      subject: `Nieuwe investeerder interesse — ${naam}`,
-      html: `
-        <h2 style="color:#1B2B4B;font-family:sans-serif">Nieuwe aanvraag via Opvang Kapitaal</h2>
-        <table style="font-family:sans-serif;font-size:15px;border-collapse:collapse;width:100%;max-width:560px">
-          <tr><td style="padding:8px 12px;font-weight:600;color:#555;width:140px">Naam</td><td style="padding:8px 12px">${naam}</td></tr>
-          <tr style="background:#f9f9f7"><td style="padding:8px 12px;font-weight:600;color:#555">E-mail</td><td style="padding:8px 12px"><a href="mailto:${email}">${email}</a></td></tr>
-          <tr><td style="padding:8px 12px;font-weight:600;color:#555">Telefoon</td><td style="padding:8px 12px">${telefoon || '—'}</td></tr>
-          <tr style="background:#f9f9f7"><td style="padding:8px 12px;font-weight:600;color:#555">Budget</td><td style="padding:8px 12px">${budget || '—'}</td></tr>
-          <tr><td style="padding:8px 12px;font-weight:600;color:#555;vertical-align:top">Bericht</td><td style="padding:8px 12px;white-space:pre-wrap">${bericht || '—'}</td></tr>
-        </table>
-        <p style="font-family:sans-serif;font-size:13px;color:#999;margin-top:24px">Verzonden via opvangkapitaal.be</p>
-      `,
+      subject: `Nieuwe investeerder interesse van ${naam}`,
+      html,
     })
 
     return NextResponse.json({ ok: true })
