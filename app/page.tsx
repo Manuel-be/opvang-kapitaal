@@ -103,7 +103,7 @@ function Calculator() {
               <input type="range" min={4} max={9} step={0.5} value={pct}
                 onChange={e => setPct(+e.target.value)} />
               <div className="flex justify-between text-xs text-gray-300 mt-2">
-                <span>4%</span><span>14%</span>
+                <span>4%</span><span>9%</span>
               </div>
             </div>
           </div>
@@ -436,7 +436,7 @@ export default function Home() {
             {[
               { n: '01', icon: Shield,    t: 'Stabiele sector',         s: 'Kinderopvang is niet conjunctuurgevoelig. Vraag groeit elk jaar, ongeacht de economie.' },
               { n: '02', icon: TrendingUp,t: 'Structureel tekort',      s: 'Gemiddeld 18+ maanden wachten in Oost-Vlaanderen. Gegarandeerde vraag van dag één.' },
-              { n: '03', icon: BarChart3, t: 'Langetermijnrendement',   s: 'Doelrendement van 4 tot 14% per jaar via ouderbijdragen en overheidssubsidies.' },
+              { n: '03', icon: BarChart3, t: 'Langetermijnrendement',   s: 'Doelrendement van 4 tot 9% per jaar via ouderbijdragen en overheidssubsidies.' },
               { n: '04', icon: Users,     t: 'Professioneel beheer',    s: 'U investeert. Wij zorgen voor de operatie: gediplomeerde begeleiders, transparant bestuur.' },
               { n: '05', icon: Building2, t: 'Schaalbaar model',        s: 'Het businessmodel is reproduceerbaar. Uitbreiding naar meerdere locaties behoort tot de visie.' },
             ].map(({ n, icon: Icon, t, s }, i) => (
