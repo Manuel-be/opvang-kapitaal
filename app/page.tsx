@@ -100,7 +100,7 @@ function Calculator() {
                 <span className="text-xs font-semibold uppercase tracking-[0.12em] text-gray-400">Rendement / jaar</span>
                 <span className="text-3xl font-bold" style={{ color: TX }}>{pct}%</span>
               </div>
-              <input type="range" min={4} max={14} step={0.5} value={pct}
+              <input type="range" min={4} max={9} step={0.5} value={pct}
                 onChange={e => setPct(+e.target.value)} />
               <div className="flex justify-between text-xs text-gray-300 mt-2">
                 <span>4%</span><span>14%</span>
